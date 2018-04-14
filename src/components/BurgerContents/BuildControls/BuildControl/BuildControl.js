@@ -1,5 +1,5 @@
 import React from 'react';
-import cssClasses from './BuildControl.css';
+import cssCl from './BuildControl.css';
 import btnClasses from './Buttons.css';
 import classnames from 'classnames';
 
@@ -15,13 +15,14 @@ const buildControl = (props) => {
     const btnLess = [
         ...btn
     ];
+    
     if (props.disabled){
         btnLess.push(btnClasses.disabled);
     }
 
     return(
-        <div className={cssClasses.BuildControl}>
-            <div className={cssClasses.Label}>{props.label}</div>
+        <div className={cssCl.BuildControl}>
+            <div className={cssCl.Label}>{props.label}</div>
             <button 
                 className={classnames(btnLess)}
                 onClick={props.removed}

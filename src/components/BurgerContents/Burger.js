@@ -1,6 +1,6 @@
 import React from 'react';
 import BurgerIngredient from './BurgerIngredient/BurgerIngredient';
-import cssClasses from './Burger.css'
+import cssCl from './Burger.css'
 
 const burger = (props) => {
     let transformedIngredients = Object.keys(props.ingredients)
@@ -17,7 +17,7 @@ const burger = (props) => {
     }
     console.log(transformedIngredients);
     return(
-        <div className={cssClasses.Burger}>
+        <div className={cssCl.Burger}>
             <BurgerIngredient type="bread-top" />
             {transformedIngredients}
             <BurgerIngredient type="bread-bottom" />
