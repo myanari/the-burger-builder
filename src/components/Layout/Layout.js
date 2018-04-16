@@ -7,7 +7,7 @@ import cssCl from './Layout.css';
 const layout = (props) => (
     <Fragment>
     <Toolbar />
-        <div> SideDrawer, Backdrop</div>
+        <div>SideDrawer</div>
         <main className={cssCl.MainContent}>
             {props.children}
         </main>

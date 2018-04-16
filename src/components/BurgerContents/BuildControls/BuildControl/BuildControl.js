@@ -9,7 +9,7 @@ const buildControl = (props) => {
         btnClasses.buttonSmall,
         btnClasses.buttonBox,
         btnClasses.buttonSecondary,
-        btnClasses.buttonLongshadow
+        btnClasses.buttonLongShadow
     ];
 
     const btnLess = [
