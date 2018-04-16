@@ -6,10 +6,11 @@ import btnClasses from './BuildControl/Buttons.css';
 import BuildControl from "./BuildControl/BuildControl";
 
 const orderBtn = [
-    btnClasses.button,
-    btnClasses.buttonLongshadow,
-    btnClasses.buttonRounded,
-    btnClasses.buttonRoyal
+  btnClasses.button,
+  btnClasses.buttonLongShadow,
+  btnClasses.buttonRounded,
+  btnClasses.buttonRoyal,
+  cssCl.BuildControl
 ];
 
 const controls = [
@@ -38,5 +39,7 @@ const buildControls = props => (
       disabled={!props.purchaseable }>ORDER NOW</button>
   </div>
 );
+
+console.log(classnames(orderBtn));
 
 export default buildControls;

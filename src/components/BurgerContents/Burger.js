@@ -7,7 +7,7 @@ const burger = (props) => {
         .map(ingrKey => { // for each of them
             return [...Array(props.ingredients[ingrKey])].map((_, index) => {
                     return <BurgerIngredient key={ingrKey + index} type={ingrKey} />;
-                })
+                });
         }).reduce((prevArr, cur) => {
             return prevArr.concat(cur);
         }, []); // transform an array into something else
@@ -15,7 +15,6 @@ const burger = (props) => {
     if(transformedIngredients.length === 0){
         transformedIngredients = <p>Please start adding ingredients.</p>
     }
-    console.log(transformedIngredients);
     return(
         <div className={cssCl.Burger}>
             <BurgerIngredient type="bread-top" />

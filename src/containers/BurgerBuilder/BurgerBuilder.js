@@ -1,7 +1,8 @@
-import React, {Component, Fragment} from 'react';
+import React, { Component, Fragment } from 'react';
 import Burger from '../../components/BurgerContents/Burger';
-import BuildControls from "../../components/BurgerContents/BuildControls/BuildControls";
+import BuildControls from '../../components/BurgerContents/BuildControls/BuildControls';
 import Modal from '../../components/UI/Modal/Modal';
+import OrderSummary from '../../components/BurgerContents/OrderSummary/OrderSummary';
 
 const INGREDIENT_PRICES = {
     salad: 0.5,
@@ -24,22 +25,16 @@ class BurgerBuilder extends Component {
 
   updatePurchaseState(ingredients) {
     const sum = Object.keys(ingredients)
-      .map(ingKey => {
-        return ingredients[ingKey];
-      })
-      .reduce((sum, el) => {
-        return sum + el;
-      }, 0);
+      .map(ingKey =>  ingredients[ingKey] )
+      .reduce((sum, el) => sum + el, 0);
 
     this.setState({ purchaseable: sum > 0 });
   }
 
-  addIngredientHandler = type => {
+  addIngredientHandler = (type) => {
     const oldCount = this.state.ingredients[type];
     const updatedCount = oldCount + 1;
-    const updatedIngredients = {
-      ...this.state.ingredients
-    };
+    const updatedIngredients = { ...this.state.ingredients };
 
     updatedIngredients[type] = updatedCount;
 
@@ -54,15 +49,11 @@ class BurgerBuilder extends Component {
     this.updatePurchaseState(updatedIngredients);
   };
 
-  removeIngredientHandler = type => {
+  removeIngredientHandler = (type) => {
     const oldCount = this.state.ingredients[type];
-    if (oldCount <= 0) {
-      return;
-    }
+    if (oldCount <= 0) { return }
     const updatedCount = oldCount - 1;
-    const updatedIngredients = {
-      ...this.state.ingredients
-    };
+    const updatedIngredients = { ...this.state.ingredients };
 
     updatedIngredients[type] = updatedCount;
 
@@ -78,18 +69,23 @@ class BurgerBuilder extends Component {
   };
 
   render() {
-    const disabledInfo = {
-      ...this.state.ingredients
-    };
+    const disabledInfo = { ...this.state.ingredients };
 
     for (let key in disabledInfo) {
       disabledInfo[key] = disabledInfo[key] <= 0;
     }
     // returns some JSX
     return <Fragment>
-        <Modal />
+        <Modal>
+          <OrderSummary ingredients={this.state.ingredients} />
+        </Modal>
         <Burger ingredients={this.state.ingredients} />
-        <BuildControls ingredientAdded={this.addIngredientHandler} ingredientRemoved={this.removeIngredientHandler} disabled={disabledInfo} price={this.state.totalPrice} purchaseable={this.state.purchaseable} />
+        <BuildControls 
+          ingredientAdded={this.addIngredientHandler} 
+          ingredientRemoved={this.removeIngredientHandler} 
+          disabled={disabledInfo} 
+          price={this.state.totalPrice} 
+          purchaseable={this.state.purchaseable} />
       </Fragment>;
   }
 }

@@ -26,10 +26,10 @@ const buildControl = (props) => {
             <button 
                 className={classnames(btnLess)}
                 onClick={props.removed}
-                disabled={props.disabled}><i class="fa fa-minus"></i></button>
+                disabled={props.disabled}><i className="fa fa-minus"></i></button>
             <button 
                 className={classnames(btn)} 
-                onClick={props.added}><i class="fa fa-plus"></i></button>
+                onClick={props.added}><i className="fa fa-plus"></i></button>
         </div>
     );
 };

@@ -1,5 +1,6 @@
 import React from 'react';
 
+
 import cssCl from './Modal.css';
 
 const modal = (props) => (

@@ -9,3 +9,7 @@
     position: fixed;
     bottom: 0;
 }
+
+.BuildControls button {
+    margin-bottom: 10px;
+}
