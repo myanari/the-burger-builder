@@ -1,6 +1,6 @@
 import React from 'react';
 import cssCl from './BuildControl.css';
-import btnClasses from './Buttons.css';
+import btnClasses from '../../../UI/Button/Button.css';
 import classnames from 'classnames';
 
 const buildControl = (props) => {

@@ -2,7 +2,7 @@ import React from 'react';
 import classnames from 'classnames';
 
 import cssCl from "./BuildControls.css";
-import btnClasses from './BuildControl/Buttons.css';
+import btnClasses from '../../UI/Button/Button.css';
 import BuildControl from "./BuildControl/BuildControl";
 
 const orderBtn = [
