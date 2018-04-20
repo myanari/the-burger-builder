@@ -1,5 +1,6 @@
 import React, { Fragment } from 'react';
 import Button from '../../UI/Button/Button';
+import cssCl from './OrderSummary.css';
 
 const orderSummary = (props) => {
 
@@ -16,6 +17,9 @@ const orderSummary = (props) => {
             <h3>Your order</h3>
             <p>A burger with the following ingredients:</p>
             <ul>{ingredientSummary}</ul>
+            <div className={cssCl.Card}>
+                <p>Total: US$ {props.price.toFixed(2)}</p>
+            </div>
             <p>Continue with checkout?</p>
             <Button
                 btnType="buttonCaution"

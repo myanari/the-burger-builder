@@ -4,10 +4,9 @@ import classnames from 'classnames'
 
 const standardClassBtn = [
     btnClasses.button,
-    btnClasses.buttonRounded,
-    btnClasses.buttonAction,
-    'button-small-caps',
-    btnClasses.button3d
+    btnClasses.buttonBox,
+    btnClasses.button3d,
+    btnClasses.buttonLongShadow
 ];
 
 // Instead of Success and Danger like Mr Schwartzmüller's project,
@@ -17,7 +16,8 @@ const standardClassBtn = [
 // My project's: buttonCaution = Max's project: Caution
 console.log(classnames(standardClassBtn));
 const button = (props) => (
-    <button 
+    <button
+        style={{margin: '3px'}}
         className={classnames(standardClassBtn, btnClasses[props.btnType])} 
         onClick={props.clicked}>{props.children}</button>
 );
