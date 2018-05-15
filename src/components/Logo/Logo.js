@@ -4,9 +4,9 @@ import cssCl from './Logo.css';
 import burgerLogo from '../../assets/images/logo.svg';
 
 const logo = (props) => (
-    <div className={cssCl.Logo}>
-        <img src={burgerLogo} alt="My Burger Logo"/>
-    </div>
+	<div className={cssCl.Logo}>
+		<img src={burgerLogo} alt="My Burger Logo"/>
+	</div>
 );
 
 export default logo;

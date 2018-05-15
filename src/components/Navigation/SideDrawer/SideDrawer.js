@@ -4,14 +4,14 @@ import NavigationItems from '../NavigationItems/NavigationItems';
 import Logo from '../../Logo/Logo';
 
 const sideDrawer = () => {
-    return (
-        <div className={cssCl.SideDrawer}>
-            <Logo />
-            <nav>
-                <NavigationItems />
-            </nav>
-        </div>
-    );
+  return (
+    <div className={cssCl.SideDrawer}>
+      <Logo />
+      <nav>
+        <NavigationItems />
+      </nav>
+    </div>
+  );
 }
 
 export default sideDrawer;

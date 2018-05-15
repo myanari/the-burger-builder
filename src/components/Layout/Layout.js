@@ -6,13 +6,13 @@ import cssCl from './Layout.css';
 // Aux HOC = wrapping something and immediately outputting it
 // Fulfilling the requirement of having a wrapping component
 const layout = (props) => (
-    <Fragment>
-        <Toolbar />
-        <SideDrawer />
-        <main className={cssCl.MainContent}>
-            {props.children}
-        </main>
-    </Fragment>
+	<Fragment>
+		<Toolbar />
+		<SideDrawer />
+		<main className={cssCl.MainContent}>
+			{props.children}
+		</main>
+	</Fragment>
 );
 
 export default layout;
