@@ -4,10 +4,11 @@ import NavigationItems from '../NavigationItems/NavigationItems';
 import Backdrop from '../../UI/Backdrop/Backdrop';
 import Logo from '../../Logo/Logo';
 
-const sideDrawer = () => {
+const sideDrawer = (props) => {
+	const attachedClasses = [cssCl.SideDrawer, ]
   return (
   	<Fragment>
-			<Backdrop show />
+			<Backdrop show={props.open} leaveBackdrop={props.closed} />
 			<div className={cssCl.SideDrawer} style={{marginBottom: '16px'}}>
 				<Logo height="11%" />
 				<nav className={cssCl.DesktopOnly}>
