@@ -23,10 +23,10 @@ const orderSummary = (props) => {
             <p>Continue with checkout?</p>
             <Button
                 btnType="buttonCaution"
-                clicked={props.canceled}><i class="fa fa-repeat"></i></Button>
+                clicked={props.canceled}><i className="fa fa-repeat"></i></Button>
             <Button
                 btnType="buttonAction"
-                clicked={props.continue}><i class="fa fa-check"></i></Button>
+                clicked={props.continue}><i className="fa fa-check"></i></Button>
         </Fragment>
     );
 };
