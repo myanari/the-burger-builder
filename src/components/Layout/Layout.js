@@ -1,4 +1,5 @@
 import React, {Fragment} from 'react';
+import SideDrawer from '../Navigation/SideDrawer/SideDrawer';
 import Toolbar from '../Navigation/Toolbar/Toolbar';
 import cssCl from './Layout.css';
 
@@ -7,7 +8,7 @@ import cssCl from './Layout.css';
 const layout = (props) => (
     <Fragment>
         <Toolbar />
-        <div>SideDrawer</div>
+        <SideDrawer />
         <main className={cssCl.MainContent}>
             {props.children}
         </main>
