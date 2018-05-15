@@ -1,7 +1,7 @@
 import React from 'react';
 
 import cssCl from './Logo.css';
-import burgerLogo from '../../assets/images/logo.png';
+import burgerLogo from '../../assets/images/logo.svg';
 
 const logo = (props) => (
     <div className={cssCl.Logo}>
