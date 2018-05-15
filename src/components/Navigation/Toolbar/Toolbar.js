@@ -3,10 +3,10 @@ import NavigationItems from '../NavigationItems/NavigationItems';
 import Logo from '../../Logo/Logo';
 import cssCl from './Toolbar.css';
 
-const toolbar = (props) => (
+const toolbar = () => (
     <header className={cssCl.Toolbar}>
         <div>MENU</div>
-        <Logo />
+        <Logo height="100%" />
         <nav><NavigationItems /></nav>
     </header>
 );
