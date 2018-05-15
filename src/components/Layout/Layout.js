@@ -1,6 +1,5 @@
 import React, {Fragment} from 'react';
 import Toolbar from '../Navigation/Toolbar/Toolbar';
-import Footer from '../Footer/Footer';
 import cssCl from './Layout.css';
 
 // Aux HOC = wrapping something and immediately outputting it
@@ -12,7 +11,6 @@ const layout = (props) => (
         <main className={cssCl.MainContent}>
             {props.children}
         </main>
-        <Footer />
     </Fragment>
 );
 
