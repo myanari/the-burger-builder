@@ -18,12 +18,6 @@
 	}
 }
 
-@media (max-width: 499px) {
-	.DesktopOnly {
-		display: none;
-	}
-}
-
 .Open {
 	transform: translateX(0);
 }

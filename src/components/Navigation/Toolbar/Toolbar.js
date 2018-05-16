@@ -8,7 +8,9 @@ const toolbar = (props) => (
     <header className={cssCl.Toolbar}>
         <Menu openSideDrawer={props.openSideDrawer} />
         <Logo height="100%" />
-        <nav><NavigationItems /></nav>
+        <nav className={cssCl.DesktopOnly}>
+					<NavigationItems />
+				</nav>
     </header>
 );
 

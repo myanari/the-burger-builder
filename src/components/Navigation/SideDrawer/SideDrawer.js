@@ -18,7 +18,7 @@ const sideDrawer = (props) => {
 			<Backdrop show={props.open} leaveBackdrop={props.closed} />
 			<div className={attachedClasses} style={{marginBottom: '16px'}}>
 				<Logo height="11%" />
-				<nav className={styles.DesktopOnly}>
+				<nav>
 					<NavigationItems />
 				</nav>
 			</div>
