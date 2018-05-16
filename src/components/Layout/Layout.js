@@ -3,21 +3,25 @@ import SideDrawer from '../Navigation/SideDrawer/SideDrawer';
 import Toolbar from '../Navigation/Toolbar/Toolbar';
 import cssCl from './Layout.css';
 
-// Aux HOC = wrapping something and immediately outputting it
-// Fulfilling the requirement of having a wrapping component
 class layout extends Component {
 	state = {
-		showSideDrawer: true
+		showSideDrawer: false
 	};
 
 	sideDrawerClosedHandler = () => {
-		this.setState({ showSideDrawer: false});
+		this.setState({ showSideDrawer: false });
+	};
+
+	sideDrawerOpenedHandler = () => {
+		this.setState(prevState => {
+			return { showSideDrawer: !prevState.showSideDrawer }
+		});
 	};
 
 	render() {
 		return(
 			<Fragment>
-				<Toolbar />
+				<Toolbar openSideDrawer={this.sideDrawerOpenedHandler} />
 				<SideDrawer
 					open={this.state.showSideDrawer}
 					closed={this.sideDrawerClosedHandler} />

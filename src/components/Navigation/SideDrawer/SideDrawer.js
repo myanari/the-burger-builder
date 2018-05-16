@@ -12,7 +12,7 @@ const sideDrawer = (props) => {
 		Open: props.open,
 		Close: !props.open
 	});
-	console.log(attachedClasses);
+
   return (
   	<Fragment>
 			<Backdrop show={props.open} leaveBackdrop={props.closed} />
