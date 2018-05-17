@@ -14,7 +14,6 @@ const standardClassBtn = [
 
 // My project's: buttonAction = Max's project: Success
 // My project's: buttonCaution = Max's project: Caution
-console.log(classnames(standardClassBtn));
 const button = (props) => (
     <button
         style={{margin: '3px'}}

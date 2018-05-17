@@ -9,7 +9,7 @@ const orderBtn = [
   btnClasses.button,
   btnClasses.buttonLongShadow,
   btnClasses.buttonRounded,
-  btnClasses.buttonRoyal,
+  btnClasses.buttonAction,
   cssCl.BuildControl
 ];
 
