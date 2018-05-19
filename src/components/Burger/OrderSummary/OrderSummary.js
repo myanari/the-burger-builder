@@ -19,7 +19,7 @@ class OrderSummary extends Component {
 			<Fragment>
 				<h3>Your order</h3>
 				<p>A burger with the following ingredients:</p>
-				<ul>{ingredientSummary}</ul>
+				<ul className={cssCl.IngredientsList}>{ingredientSummary}</ul>
 				<div className={cssCl.Card}>
 					<p>Total: US$ {this.props.price.toFixed(2)}</p>
 				</div>
