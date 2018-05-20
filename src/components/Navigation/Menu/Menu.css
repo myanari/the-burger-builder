@@ -1,8 +1,14 @@
 .Hamburger {
     height: 100%;
     width: 36px;
-    margin: 8px 0;
+    margin: 8px;
     cursor: pointer;
+}
+
+@media (min-width: 500px) {
+    .Hamburger {
+        display: none;
+    }
 }
 
 .img {
