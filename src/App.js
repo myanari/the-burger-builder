@@ -3,11 +3,11 @@ import Layout from './components/Layout/Layout';
 import BurgerBuilder from './containers/BurgerBuilder/BurgerBuilder';
 
 class App extends Component {
-  render() {
+	render() {
     return (
       <Fragment>
         <Layout>
-          <BurgerBuilder />
+          {this.state.show ? <BurgerBuilder /> : null}
         </Layout>
       </Fragment>
     );
