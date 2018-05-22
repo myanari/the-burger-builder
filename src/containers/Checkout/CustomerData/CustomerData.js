@@ -37,6 +37,7 @@ class CustomerData extends Component {
     axios.post('/orders.json', order)
       .then(res => {
         this.setState({ loading: false });
+        this.props.history.push('/');
       })
       .catch(err => {
         this.setState({ loading: false });
@@ -54,7 +55,7 @@ class CustomerData extends Component {
       </form>
     );
     if (this.state.loading) {
-      form = <Spinner />;
+      form = <Spinner dark />;
     }
     return(
       <div className={styles.CustomerData}>
