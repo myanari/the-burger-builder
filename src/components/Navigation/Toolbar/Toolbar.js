@@ -2,13 +2,13 @@ import React from 'react';
 import Menu from '../Menu/Menu';
 import NavigationItems from '../NavigationItems/NavigationItems';
 import Logo from '../../Logo/Logo';
-import cssCl from './Toolbar.css';
+import styles from './Toolbar.css';
 
 const toolbar = (props) => (
-    <header className={cssCl.Toolbar}>
+    <header className={styles.Toolbar}>
         <Menu openSideDrawer={props.openSideDrawer} />
         <Logo height="100%" />
-        <nav className={cssCl.DesktopOnly}>
+        <nav className={styles.DesktopOnly}>
 					<NavigationItems />
 				</nav>
     </header>

@@ -1,7 +1,7 @@
 import React from 'react';
 import classnames from 'classnames';
 
-import cssCl from "./BuildControls.css";
+import styles from "./BuildControls.css";
 import btnClasses from '../../UI/Button/Button.css';
 import BuildControl from "./BuildControl/BuildControl";
 
@@ -10,7 +10,7 @@ const orderBtn = [
   btnClasses.buttonLongShadow,
   btnClasses.buttonRounded,
   btnClasses.buttonAction,
-  cssCl.BuildControl
+  styles.BuildControl
 ];
 
 const controls = [
@@ -21,7 +21,7 @@ const controls = [
 ];
 
 const buildControls = props => (
-  <div className={cssCl.BuildControls}>
+  <div className={styles.BuildControls}>
     <p>
       Current price: <strong>{props.price.toFixed(2)}</strong>
     </p>

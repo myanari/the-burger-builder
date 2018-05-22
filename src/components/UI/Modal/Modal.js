@@ -1,7 +1,7 @@
 import React, { Component, Fragment } from 'react';
 
 import Backdrop from '../Backdrop/Backdrop';
-import cssCl from './Modal.css';
+import styles from './Modal.css';
 
 class Modal extends Component {
 	shouldComponentUpdate(nextProps) {
@@ -13,7 +13,7 @@ class Modal extends Component {
 			<Fragment>
 				<Backdrop show={this.props.show} leaveBackdrop={this.props.closeModal} />
 				<div
-					className={cssCl.Modal}
+					className={styles.Modal}
 					style={{
 						transform: this.props.show ? 'translateY(0)' : 'translateY(-100vh)',
 						opacity: this.props.show ? '1' : '0'

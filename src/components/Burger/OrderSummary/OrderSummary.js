@@ -1,6 +1,6 @@
 import React, { Component, Fragment } from 'react';
 import Button from '../../UI/Button/Button';
-import cssCl from './OrderSummary.css';
+import styles from './OrderSummary.css';
 
 class OrderSummary extends Component {
 	componentWillUpdate() {
@@ -19,8 +19,8 @@ class OrderSummary extends Component {
 			<Fragment>
 				<h3>Your order</h3>
 				<p>A burger with the following ingredients:</p>
-				<ul className={cssCl.IngredientsList}>{ingredientSummary}</ul>
-				<div className={cssCl.Card}>
+				<ul className={styles.IngredientsList}>{ingredientSummary}</ul>
+				<div className={styles.Card}>
 					<p>Total: US$ {this.props.price.toFixed(2)}</p>
 				</div>
 				<p>Continue with checkout?</p>

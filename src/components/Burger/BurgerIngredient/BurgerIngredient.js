@@ -1,7 +1,7 @@
 import React from 'react';
 import PropTypes from 'prop-types';
 
-import cssCl from './BurgerIngredient.css';
+import styles from './BurgerIngredient.css';
 
 const burgerIngredient = (props) => {
     let ingredient = null;
@@ -9,27 +9,27 @@ const burgerIngredient = (props) => {
     // Instead change it to this.props
     switch (props.type) {
         case ('bread-bottom'):
-            ingredient = <div className={cssCl.BreadBottom}></div>;
+            ingredient = <div className={styles.BreadBottom}></div>;
             break;
         case ('bread-top'):
             ingredient = (
-                <div className={cssCl.BreadTop}>
-                    <div className={cssCl.Seeds1}></div>
-                    <div className={cssCl.Seeds2}></div>
+                <div className={styles.BreadTop}>
+                    <div className={styles.Seeds1}></div>
+                    <div className={styles.Seeds2}></div>
                 </div>
             );
             break;
         case ('meat'):
-            ingredient = <div className={cssCl.Meat}></div>;
+            ingredient = <div className={styles.Meat}></div>;
             break;
         case ('salad'):
-            ingredient = <div className={cssCl.Salad}></div>;
+            ingredient = <div className={styles.Salad}></div>;
             break;
         case ('bacon'):
-            ingredient = <div className={cssCl.Bacon}></div>;
+            ingredient = <div className={styles.Bacon}></div>;
             break;
         case ('cheese'):
-            ingredient = <div className={cssCl.Cheese}></div>;
+            ingredient = <div className={styles.Cheese}></div>;
             break;
         default:
             ingredient = null;

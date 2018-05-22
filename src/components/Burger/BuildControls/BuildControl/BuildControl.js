@@ -1,5 +1,5 @@
 import React from 'react';
-import cssCl from './BuildControl.css';
+import styles from './BuildControl.css';
 import btnClasses from '../../../UI/Button/Button.css';
 import classnames from 'classnames';
 
@@ -21,8 +21,8 @@ const buildControl = (props) => {
 	}
 
 	return(
-		<div className={cssCl.BuildControl}>
-			<div className={cssCl.Label}>{props.label}</div>
+		<div className={styles.BuildControl}>
+			<div className={styles.Label}>{props.label}</div>
 			<button 
 				className={classnames(btnLess)}
 				onClick={props.removed}
