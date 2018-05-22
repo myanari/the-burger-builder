@@ -5,7 +5,7 @@ import styles from './Input.css';
 const input = (props) => {
   let inputElement = null;
 
-  switch (props.inputType){
+  switch (props.inputtype){
     case('text'):
       inputElement = <textarea className={styles.InputElement} {...props} />
       break;
