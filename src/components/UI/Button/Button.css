@@ -1054,14 +1054,14 @@
 * rythmically around the edges of
 * a button.
 */
-.button-glow {
+.buttonGlow {
   -webkit-animation-duration: 3s;
           animation-duration: 3s;
   -webkit-animation-iteration-count: infinite;
           animation-iteration-count: infinite;
   -webkit-animation-name: glowing;
           animation-name: glowing; }
-  .button-glow:active, .button-glow.active, .button-glow.is-active {
+  .buttonGlow:active, .buttonGlow.active, .buttonGlow.is-active {
     -webkit-animation-name: none;
             animation-name: none; }
 
@@ -1070,25 +1070,25 @@
 *
 * Create colors for glowing buttons
 */
-.button-glow.buttonPrimary {
+.buttonGlow.buttonPrimary {
   -webkit-animation-name: glowing-primary;
           animation-name: glowing-primary; }
-.button-glow.button-plain {
+.buttonGlow.button-plain {
   -webkit-animation-name: glowing-plain;
           animation-name: glowing-plain; }
-.button-glow.buttonInverse {
+.buttonGlow.buttonInverse {
   -webkit-animation-name: glowing-inverse;
           animation-name: glowing-inverse; }
-.button-glow.buttonAction {
+.buttonGlow.buttonAction {
   -webkit-animation-name: glowing-action;
           animation-name: glowing-action; }
-.button-glow.button-highlight {
+.buttonGlow.button-highlight {
   -webkit-animation-name: glowing-highlight;
           animation-name: glowing-highlight; }
-.button-glow.buttonCaution {
+.buttonGlow.buttonCaution {
   -webkit-animation-name: glowing-caution;
           animation-name: glowing-caution; }
-.button-glow.buttonRoyal {
+.buttonGlow.buttonRoyal {
   -webkit-animation-name: glowing-royal;
           animation-name: glowing-royal; }
 
