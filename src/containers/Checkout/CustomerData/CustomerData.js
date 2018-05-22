@@ -2,6 +2,7 @@ import React, { Component } from 'react';
 import axios from '../../../axios-orders';
 
 import styles from './CustomerData.css';
+import Spinner from '../../../components/UI/Spinner/Spinner';
 import Button from '../../../components/UI/Button/Button';
 
 class CustomerData extends Component {
@@ -43,16 +44,22 @@ class CustomerData extends Component {
   }
 
   render() {
+    let form = (
+      <form>
+        <input className={styles.Input} type="text" name="name" placeholder="Your name"/>
+        <input className={styles.Input} type="email" name="email" placeholder="Your email"/>
+        <input className={styles.Input} type="text" name="street" placeholder="Your street name"/>
+        <input className={styles.Input} type="text" name="postal" placeholder="Your postal code"/>
+        <Button btnType="buttonAction" clicked={this.orderHandler}>Submit</Button>
+      </form>
+    );
+    if (this.state.loading) {
+      form = <Spinner />;
+    }
     return(
       <div className={styles.CustomerData}>
         <h4>Enter your contact data</h4>
-        <form>
-          <input className={styles.Input} type="text" name="name" placeholder="Your name"/>
-          <input className={styles.Input} type="email" name="email" placeholder="Your email"/>
-          <input className={styles.Input} type="text" name="street" placeholder="Your street name"/>
-          <input className={styles.Input} type="text" name="postal" placeholder="Your postal code"/>
-          <Button btnType="buttonAction" clicked={this.orderHandler}>Submit</Button>
-        </form>
+        {form}
       </div>
     );
   }

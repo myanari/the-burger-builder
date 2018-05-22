@@ -1,12 +1,12 @@
 import React from 'react';
 import styles from './Spinner.css';
 
-const spinner = () => (
+const spinner = (props) => (
   <div className={styles.Ellipsis}>
-    <div></div>
-    <div></div>
-    <div></div>
-    <div></div>
+    <div style={props.dark ? {background: '#424242'} : {}}></div>
+    <div style={props.dark ? {background: '#424242'} : {}}></div>
+    <div style={props.dark ? {background: '#424242'} : {}}></div>
+    <div style={props.dark ? {background: '#424242'} : {}}></div>
   </div>
 );
 
