@@ -1,6 +1,7 @@
 import React, { Component } from 'react';
 
 import CheckoutSummary from '../../components/Order/CheckoutSummary/CheckoutSummary';
+import styles from './Checkout.css';
 
 class Checkout extends Component {
   state = {
@@ -14,7 +15,7 @@ class Checkout extends Component {
 
   render() {
     return(
-      <div>
+      <div className={styles.CheckoutSummary}>
         <CheckoutSummary ingredients={this.state.ingredients} />
       </div>
     );
