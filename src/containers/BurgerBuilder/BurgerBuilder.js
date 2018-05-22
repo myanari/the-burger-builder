@@ -46,32 +46,28 @@ class BurgerBuilder extends Component {
     updatedIngredients[type] = updatedCount;
 
     const priceAddition = INGREDIENT_PRICES[type];
-
     const oldPrice = this.state.totalPrice;
-
     const newPrice = oldPrice + priceAddition;
 
     this.setState({ totalPrice: newPrice, ingredients: updatedIngredients });
-
     this.updatePurchaseState(updatedIngredients);
   };
 
   removeIngredientHandler = (type) => {
     const oldCount = this.state.ingredients[type];
+
     if (oldCount <= 0) { return }
+
     const updatedCount = oldCount - 1;
     const updatedIngredients = { ...this.state.ingredients };
 
     updatedIngredients[type] = updatedCount;
 
     const priceDeduction = INGREDIENT_PRICES[type];
-
     const oldPrice = this.state.totalPrice;
-
     const newPrice = oldPrice - priceDeduction;
 
     this.setState({ totalPrice: newPrice, ingredients: updatedIngredients });
-
     this.updatePurchaseState(updatedIngredients);
   };
 
@@ -84,28 +80,28 @@ class BurgerBuilder extends Component {
   }
 
   continuePurchaseHandler = () => {
-    this.setState({loading: true});
-    const order = {
-      ingredients: this.state.ingredients,
-      price: this.state.totalPrice,
-      customer: {
-        name: 'Marcelle',
-        address: {
-          street: 'Rua Teste',
-          zipcode: '12354',
-          country: 'Finland'
-        },
-        email: 'test@test.com'
-      },
-      deliveryMethod: 'fastest'
-    }
-    axios.post('/orders.json', order)
-      .then(res => {
-        this.setState({ loading: false, purchasing: false });
-      })
-      .catch(err => {
-        this.setState({ loading: false, purchasing: false });
-      })
+    // this.setState({loading: true});
+    // const order = {
+    //   ingredients: this.state.ingredients,
+    //   price: this.state.totalPrice,
+    //   customer: {
+    //     name: 'Marcelle',
+    //     address: {
+    //       street: 'Rua Teste',
+    //       zipcode: '12354',
+    //       country: 'Finland'
+    //     },
+    //     email: 'test@test.com'
+    //   },
+    //   deliveryMethod: 'fastest'
+    // }
+    // axios.post('/orders.json', order)
+    //   .then(res => {
+    //     this.setState({ loading: false, purchasing: false });
+    //   })
+    //   .catch(err => {
+    //     this.setState({ loading: false, purchasing: false });
+    //   })
     this.props.history.push('/checkout');
   }
 

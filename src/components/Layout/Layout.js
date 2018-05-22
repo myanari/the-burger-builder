@@ -1,8 +1,5 @@
 import React, { Component, Fragment } from 'react';
-import { Route } from 'react-router-dom';
 
-import BurgerBuilder from '../../containers/BurgerBuilder/BurgerBuilder';
-import Checkout from '../../containers/Checkout/Checkout';
 import SideDrawer from '../Navigation/SideDrawer/SideDrawer';
 import Toolbar from '../Navigation/Toolbar/Toolbar';
 import cssCl from './Layout.css';
