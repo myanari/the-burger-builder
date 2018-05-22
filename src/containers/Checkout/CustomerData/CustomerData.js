@@ -18,11 +18,11 @@ class CustomerData extends Component {
       <div className={styles.CustomerData}>
         <h4>Enter your contact data</h4>
         <form>
-          <input type="text" name="name" placeholder="Your name"/>
-          <input type="email" name="email" placeholder="Your email"/>
-          <input type="text" name="street" placeholder="Your street name"/>
-          <input type="text" name="postal" placeholder="Your postal code"/>
-          <Button btnType="btnAction" />
+          <input className={styles.Input} type="text" name="name" placeholder="Your name"/>
+          <input className={styles.Input} type="email" name="email" placeholder="Your email"/>
+          <input className={styles.Input} type="text" name="street" placeholder="Your street name"/>
+          <input className={styles.Input} type="text" name="postal" placeholder="Your postal code"/>
+          <Button btnType="buttonAction">Submit</Button>
         </form>
       </div>
     );
