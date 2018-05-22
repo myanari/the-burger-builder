@@ -2,10 +2,10 @@ import React from 'react';
 
 import styles from './Order.css';
 
-const order = () => (
+const order = (props) => (
   <div className={styles.Order}>
-    <p>Ingredients: Salad (1)</p>
-    <p>Price <strong>USD 5.45</strong></p>
+    <p>Ingredients: {}</p>
+    <p>Price <strong>{props.data.deliveryMethod}</strong></p>
   </div>
 );
 

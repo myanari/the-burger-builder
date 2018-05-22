@@ -9,15 +9,17 @@ import classnames from 'classnames'
 // My project's: buttonCaution = Max's project: Caution
 class button extends React.Component {
     state = {
-        stdStyles: [btnClasses.button,
+        stdStyles: [
+            btnClasses.button,
             btnClasses.buttonLongShadow,
             btnClasses.button3d,
-            btnClasses.buttonBox]
+            btnClasses.buttonBox
+        ]
     }
     componentDidMount() {
         if (typeof this.props.children === 'string') {
             let styles = [btnClasses.button, btnClasses.buttonRounded, btnClasses.buttonGlow];
-            this.setState({stdStyles: styles}, () => console.log(this.state));
+            this.setState({stdStyles: styles});
 
         }
     }
