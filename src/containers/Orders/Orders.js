@@ -18,7 +18,7 @@ class Orders extends Component {
           id: key
         })
       }
-      this.setState({loading: false, orders: fetchedOrders}, () => console.log(this.state));
+      this.setState({loading: false, orders: fetchedOrders});
     }).catch(err => {
       this.setState({loading: false});
     })

@@ -4,8 +4,8 @@ import styles from './Order.css';
 
 const order = (props) => (
   <div className={styles.Order}>
-    <p>Ingredients: {}</p>
-    <p>Price <strong>{props.data.deliveryMethod}</strong></p>
+    <p>Ingredients: US$ {}</p>
+    <p>Price <strong>{Number(props.data.price).toFixed(2)}</strong></p>
   </div>
 );
 
