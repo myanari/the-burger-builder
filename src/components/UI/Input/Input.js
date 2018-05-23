@@ -16,7 +16,9 @@ const input = (props) => {
       inputElement = (
         <select className={styles.InputElement} value={props.value}>
           {props.elementConfig.options.map(option => (
-            <option value={option.value}>{option.displayValue}</option>
+            <option value={option.value} key={option.value}>
+              {option.displayValue}
+            </option>
           ))}
         </select>
       );
