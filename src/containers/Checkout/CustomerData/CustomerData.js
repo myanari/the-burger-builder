@@ -149,6 +149,7 @@ class CustomerData extends Component {
             elementConfig={el.config.elementConfig}
             value={el.config.value}
             invalid={!el.config.valid}
+            shouldValidate={el.config.validation}
             changed={(event) => this.inputChangedHandler(event, el.id)} />
         ))}
         <Button btnType="buttonAction">Submit</Button>
