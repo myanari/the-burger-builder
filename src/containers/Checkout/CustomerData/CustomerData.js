@@ -78,10 +78,12 @@ class CustomerData extends Component {
             {value: 'cheapest', displayValue: 'Cheapest'}
           ]
         },
-        value: ''
+        value: '',
+        valid: true
       },
     },
-    loading: false
+    loading: false,
+    formIsValid: false
   }
 
   orderHandler = (event) => {
@@ -110,7 +112,7 @@ class CustomerData extends Component {
 
   checkValidity(value, rules) {
     let isValid = true;
-    if (rules){
+    if (rules) {
       if (rules.required) {
         isValid = validator.trim(value) !== '' && isValid;
       }
@@ -127,11 +129,18 @@ class CustomerData extends Component {
   inputChangedHandler = (event, inputId) => {
     const updatedOrderForm = { ...this.state.orderForm };
     const updatedFormEl = { ...updatedOrderForm[inputId] };
+
     updatedFormEl.value = event.target.value;
     updatedFormEl.valid = this.checkValidity(updatedFormEl.value, updatedFormEl.validation);
-    console.log(updatedFormEl);
     updatedOrderForm[inputId] = updatedFormEl;
-    this.setState({orderForm: updatedOrderForm});
+
+    let formIsValid = true;
+    
+    for (let inputIdentifier in updatedOrderForm) {
+      formIsValid = updatedOrderForm[inputIdentifier].valid && formIsValid;
+    }
+
+    this.setState({orderForm: updatedOrderForm, formIsValid: formIsValid});
   }
 
   render() {
@@ -154,7 +163,7 @@ class CustomerData extends Component {
             shouldValidate={el.config.validation}
             changed={(event) => this.inputChangedHandler(event, el.id)} />
         ))}
-        <Button btnType="buttonAction">Submit</Button>
+        <Button btnType="buttonAction" disabled={!this.state.formIsValid}>Submit</Button>
       </form>
     );
     if (this.state.loading) {
