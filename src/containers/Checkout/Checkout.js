@@ -17,17 +17,16 @@ class Checkout extends Component {
     let totalPrice = 0;
     for(let param of query.entries()) {
       if(param[0] === 'price') {
-        console.log(typeof param[0]);
         totalPrice = param[1];
       } else {
         ingredients[param[0]] = param[1];
       }
     }
-    this.setState({ingredients: ingredients, price: totalPrice}, () => console.log(this.state.price));
+    this.setState({ingredients: ingredients, price: totalPrice});
   }
 
   checkoutContinuedHandler = () => {
-    this.props.history.replace('/checkout/customer-data')
+    this.props.history.replace('/checkout/customer-data');
   }
 
   checkoutCancelledHandler = () => {
@@ -38,6 +37,7 @@ class Checkout extends Component {
     return(
       <div className={styles.CheckoutSummary}>
         <CheckoutSummary
+          btnRef={this.props.btnRef}
           ingredients={this.state.ingredients}
           checkoutCancelled={this.checkoutCancelledHandler}
           checkoutContinued={this.checkoutContinuedHandler}/>

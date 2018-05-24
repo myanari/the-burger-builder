@@ -22,15 +22,21 @@ class button extends React.Component {
             this.setState({stdStyles: styles});
         }
     }
+    
     render() {
         const classes = classnames(this.state.stdStyles, btnClasses[this.props.btnType]);
-        return(
+        let btn = (
             <button
                 disabled={this.props.disabled}
                 style={{margin: '3px'}}
                 className={classes} 
                 onClick={this.props.clicked}>{this.props.children}</button>
         );
+
+        if (this.props.hide) {
+            btn = null;
+        }
+        return(btn);
     }
     
 };
