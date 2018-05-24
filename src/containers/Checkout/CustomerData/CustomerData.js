@@ -1,4 +1,5 @@
 import React, { Component } from 'react';
+import validator from 'validator';
 import axios from '../../../axios-orders';
 
 import styles from './CustomerData.css';
@@ -110,7 +111,13 @@ class CustomerData extends Component {
   checkValidity(value, rules) {
     let isValid = false;
     if (rules.required) {
-      isValid = value.trim() !== '';
+      isValid = validator.trim(value) !== '';
+    }
+    if (rules.postal) {
+      isValid = validator.isPostalCode(validator.trim(value));
+    }
+    if (rules.email) {
+      isValid = validator.isEmail(validator.trim(value));
     }
     return isValid;
   }
