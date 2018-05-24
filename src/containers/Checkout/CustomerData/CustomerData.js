@@ -20,7 +20,8 @@ class CustomerData extends Component {
         validation: {
           required: true
         },
-        valid: false
+        valid: false,
+        touched: false
       },
       street: {
         elementType: 'input',
@@ -32,7 +33,8 @@ class CustomerData extends Component {
         validation: {
           required: true
         },
-        valid: false
+        valid: false,
+        touched: false
       },
       zipcode: {
         elementType: 'input',
@@ -42,9 +44,11 @@ class CustomerData extends Component {
         },
         value: '',
         validation: {
-          required: true
+          required: true,
+          postal: true
         },
-        valid: false
+        valid: false,
+        touched: false
       },
       country: {
         elementType: 'input',
@@ -56,7 +60,8 @@ class CustomerData extends Component {
         validation: {
           required: true
         },
-        valid: false
+        valid: false,
+        touched: false
       },
       email: {
         elementType: 'input',
@@ -66,9 +71,11 @@ class CustomerData extends Component {
         },
         value: '',
         validation: {
-          required: true
+          required: true,
+          email: true
         },
-        valid: false
+        valid: false,
+        touched: false
       },
       deliveryMethod: {
         elementType: 'select',
@@ -78,7 +85,7 @@ class CustomerData extends Component {
             {value: 'cheapest', displayValue: 'Cheapest'}
           ]
         },
-        value: '',
+        value: 'fastest',
         valid: true
       },
     },
@@ -117,7 +124,7 @@ class CustomerData extends Component {
         isValid = validator.trim(value) !== '' && isValid;
       }
       if (rules.postal) {
-        isValid = validator.isPostalCode(validator.trim(value)) && isValid;
+        isValid = validator.isPostalCode(validator.trim(value + ''), 'any') && isValid;
       }
       if (rules.email) {
         isValid = validator.isEmail(validator.trim(value)) && isValid;
@@ -132,6 +139,7 @@ class CustomerData extends Component {
 
     updatedFormEl.value = event.target.value;
     updatedFormEl.valid = this.checkValidity(updatedFormEl.value, updatedFormEl.validation);
+    updatedFormEl.touched = true;
     updatedOrderForm[inputId] = updatedFormEl;
 
     let formIsValid = true;
@@ -159,7 +167,7 @@ class CustomerData extends Component {
             elementType={el.config.elementType}
             elementConfig={el.config.elementConfig}
             value={el.config.value}
-            invalid={!el.config.valid}
+            invalid={!el.config.valid && el.config.touched}
             shouldValidate={el.config.validation}
             changed={(event) => this.inputChangedHandler(event, el.id)} />
         ))}
