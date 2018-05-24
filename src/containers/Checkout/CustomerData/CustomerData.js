@@ -110,14 +110,16 @@ class CustomerData extends Component {
 
   checkValidity(value, rules) {
     let isValid = true;
-    if (rules.required) {
-      isValid = validator.trim(value) !== '' && isValid;
-    }
-    if (rules.postal) {
-      isValid = validator.isPostalCode(validator.trim(value)) && isValid;
-    }
-    if (rules.email) {
-      isValid = validator.isEmail(validator.trim(value)) && isValid;
+    if (rules){
+      if (rules.required) {
+        isValid = validator.trim(value) !== '' && isValid;
+      }
+      if (rules.postal) {
+        isValid = validator.isPostalCode(validator.trim(value)) && isValid;
+      }
+      if (rules.email) {
+        isValid = validator.isEmail(validator.trim(value)) && isValid;
+      }
     }
     return isValid;
   }
