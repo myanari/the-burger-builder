@@ -1,20 +1,35 @@
 import * as actionTypes from './actions';
 
-const initialStore = {
-  ingredients: null,
+const initialState = {
+  ingredients: {
+    salad: 0,
+    bacon: 0,
+    cheese: 0,
+    meat: 0
+  },
   totalPrice: 4
 }
-
-const reducer = (store = initialStore, actions) => {
+const reducer = (state = initialState, action) => {
   switch(action.type) {
     case actionTypes.ADD_INGREDIENT:
-      return {};
+      return {
+        ...state,
+        ingredients: {
+          ...state.ingredients,
+          [action.ingredientName]: state.ingredients[action.ingredientName] + 1
+        }
+      };
     case actionTypes.REMOVE_INGREDIENT:
-      return {};
+      return {
+        ...state,
+        ingredients: {
+          ...state.ingredients,
+          [action.ingredientName]: state.ingredients[action.ingredientName] - 1
+        }
+      };
     default:
       return state;
   }
-  return store;
 }
 
 export default reducer;
