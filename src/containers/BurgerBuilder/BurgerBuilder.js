@@ -12,16 +12,8 @@ import OrderSummary from '../../components/Burger/OrderSummary/OrderSummary';
 
 class BurgerBuilder extends Component {
   state = {
-    purchasing: false,
-    loading: false
+    purchasing: false
   };
-
-  componentDidMount() {
-    axios.get('https://burger-builder-myy.firebaseio.com/ingredients.json')
-      .then(response => {
-        this.setState({ingredients: response.data});
-      })
-  }
 
   updatePurchaseState(ingredients) {
     const sum = Object.keys(ingredients)
@@ -83,9 +75,6 @@ class BurgerBuilder extends Component {
           ingredients={this.props.ings}
           price={this.props.price} />
       );
-      if (this.state.loading) {
-        orderSummary = <Spinner />
-      }
     }
     // returns some JSX
     return (
