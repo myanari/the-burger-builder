@@ -1,6 +1,7 @@
 import React, { Component } from 'react';
 import validator from 'validator';
 import axios from '../../../axios-orders';
+import { connect } from 'react-redux';
 
 import styles from './CustomerData.css';
 import Input from '../../../components/UI/Input/Input';
@@ -103,7 +104,7 @@ class CustomerData extends Component {
     }
 
     const order = {
-      ingredients: this.props.ingredients,
+      ingredients: this.props.ings,
       price: this.props.price,
       orderData: formData
     }
@@ -161,7 +162,8 @@ class CustomerData extends Component {
     }
     let form = (
       <form onSubmit={this.orderHandler}>
-        {formElements.map(el => (
+        {
+          formElements.map(el => (
           <Input
             key={el.id}
             elementType={el.config.elementType}
@@ -170,7 +172,8 @@ class CustomerData extends Component {
             invalid={!el.config.valid && el.config.touched}
             shouldValidate={el.config.validation}
             changed={(event) => this.inputChangedHandler(event, el.id)} />
-        ))}
+          ))
+        }
         <Button btnType="buttonAction" disabled={!this.state.formIsValid}>Submit</Button>
       </form>
     );
@@ -186,4 +189,11 @@ class CustomerData extends Component {
   }
 }
 
-export default CustomerData;
+const mapStateToProps = state => {
+  return {
+    ings: state.ingredients,
+    price: state.totalPrice
+  }
+}
+
+export default connect(mapStateToProps)(CustomerData);
