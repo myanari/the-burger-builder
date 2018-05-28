@@ -2,11 +2,13 @@ import React, { Component } from 'react';
 import validator from 'validator';
 import axios from '../../../axios-orders';
 import { connect } from 'react-redux';
+import * as actions from '../../../store/actions'
 
 import styles from './CustomerData.css';
 import Input from '../../../components/UI/Input/Input';
 import Spinner from '../../../components/UI/Spinner/Spinner';
 import Button from '../../../components/UI/Button/Button';
+import withErrorHandler from '../../../hoc/withErrorHandler';
 
 class CustomerData extends Component {
   state = {
@@ -96,7 +98,6 @@ class CustomerData extends Component {
 
   orderHandler = (event) => {
     event.preventDefault();
-    this.setState({loading: true});
     const formData = {};
 
     for (let formElementId in this.state.orderForm) {
@@ -108,14 +109,8 @@ class CustomerData extends Component {
       price: this.props.price,
       orderData: formData
     }
-    axios.post('/orders.json', order)
-      .then(res => {
-        this.setState({ loading: false });
-        this.props.history.push('/orders');
-      })
-      .catch(err => {
-        this.setState({ loading: false });
-      })
+
+    this.props.onOrderBurger(order);
   }
 
   checkValidity(value, rules) {
@@ -196,4 +191,10 @@ const mapStateToProps = state => {
   }
 }
 
-export default connect(mapStateToProps)(CustomerData);
+const mapDispatchToProps = dispatch => {
+  return{
+    onOrderBurger: (orderData) => dispatch(actions.purchaseBurgerStart(orderData))
+  }
+}
+
+export default connect(mapStateToProps, mapDispatchToProps)(withErrorHandler(CustomerData, axios));
