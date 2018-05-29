@@ -69,7 +69,6 @@ class BurgerBuilder extends Component {
           price={this.props.price} />
       );
     }
-    // returns some JSX
     return (
       <Fragment>
         <Modal 
@@ -84,9 +83,9 @@ class BurgerBuilder extends Component {
 
 const mapStateToProps = state => {
   return {
-    ings: state.ingredients,
-    price: state.totalPrice,
-    err: state.error
+    ings: state.burgerBuilder.ingredients,
+    price: state.burgerBuilder.totalPrice,
+    err: state.burgerBuilder.error
   };
 };
 
