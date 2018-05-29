@@ -9,17 +9,16 @@ import styles from './Checkout.css';
 class Checkout extends Component {
   checkoutContinuedHandler = () => {
     this.props.history.replace('/checkout/customer-data');
-  }
+  };
 
   checkoutCancelledHandler = () => {
     this.props.history.goBack();
-  }
+  };
 
   render() {
     return(
       <div className={styles.CheckoutSummary}>
         <CheckoutSummary
-          btnRef={this.props.btnRef}
           ingredients={this.props.ings}
           checkoutCancelled={this.checkoutCancelledHandler}
           checkoutContinued={this.checkoutContinuedHandler}/>
