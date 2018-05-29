@@ -23,31 +23,20 @@ class BurgerBuilder extends Component {
     const sum = Object.keys(ingredients)
       .map(ingKey =>  ingredients[ingKey] )
       .reduce((sum, el) => sum + el, 0);
-
     return sum > 0;
   }
 
   purchaseHandler = () => {
     this.setState({ purchasing: true });
-  }
+  };
 
   cancelPurchaseHandler = () => {
     this.setState({ purchasing: false });
-  }
+  };
 
   continuePurchaseHandler = () => {
-    const queryParams = [];
-    for (let i in this.state.ingredients) {
-      queryParams.push(`${encodeURIComponent(i)}=${encodeURIComponent(this.state.ingredients[i])}`);
-    }
-    queryParams.push('price=' + this.state.totalPrice);
-    const queryString = queryParams.join('&');
-
-    this.props.history.push({
-      pathname: '/checkout',
-      search: '?' + queryString
-    });
-  }
+    this.props.history.push('/checkout');
+  };
 
   render() {
     const disabledInfo = { ...this.props.ings };
@@ -99,7 +88,7 @@ const mapStateToProps = state => {
     price: state.totalPrice,
     err: state.error
   };
-}
+};
 
 const mapDispatchToProps = dispatch => {
   return {
@@ -107,6 +96,6 @@ const mapDispatchToProps = dispatch => {
     onIngredientAdded: (ingName) => dispatch(actions.addIngredient(ingName)),
     onIngredientRemoved: (ingName) => dispatch(actions.removeIngredient(ingName))
   };
-}
+};
 
 export default connect(mapStateToProps, mapDispatchToProps)(withErrorHandler(BurgerBuilder, axios));
