@@ -17,7 +17,7 @@ class button extends React.Component {
         ]
     }
     componentDidMount() {
-        if (typeof this.props.children === 'string') {
+        if (this.props.children) {
             let styles = [btnClasses.button, btnClasses.buttonRounded, btnClasses.buttonGlow];
             this.setState({stdStyles: styles});
         }

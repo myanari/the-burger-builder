@@ -38,7 +38,8 @@ class Auth extends Component {
 					password: true
 				}
 			}
-		}
+		},
+		isSignup: true
 	};
 
 	static checkValidity(value, rules) {
@@ -75,6 +76,12 @@ class Auth extends Component {
 		this.props.onAuth(this.state.controls.email.value, this.state.controls.password.value);
 	};
 
+	switchAuthModeHandler = () => {
+		this.setState(prevState => {
+			return { isSignup: !this.state.isSignup };
+		});
+	};
+
 	render() {
 		const formElements = [];
 		for (let key in this.state.controls) {
@@ -100,6 +107,9 @@ class Auth extends Component {
 					{form}
 					<Button btnType="buttonAction">Submit</Button>
 				</form>
+				<Button
+					clicked={this.switchAuthModeHandler}
+					btnType="buttonCaution">SWITCH TO {'SIGNIN'}</Button>
 			</div>
 		);
 	}
