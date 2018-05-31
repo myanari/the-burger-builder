@@ -104,8 +104,17 @@ class Auth extends Component {
 				changed={(event) => this.inputChangedHandler(event, el.id)} />
 		));
 
+		let errorMessage = null;
+
+		if (this.props.error) {
+			errorMessage = (
+				<p style={{color: '#f44336'}}>{this.props.error.message}</p>
+			);
+		}
+
 		let showing = (
 			<div>
+				{ errorMessage }
 				<form onSubmit={this.onSubmitHandler}>
 					{ form }
 					<Button btnType="buttonAction">Submit</Button>
@@ -120,6 +129,7 @@ class Auth extends Component {
 			showing = <Spinner dark />
 		}
 
+
 		return (
 			<div className={styles.Auth}>
 				{showing}
@@ -130,7 +140,8 @@ class Auth extends Component {
 
 const mapStateToProps = state => {
 	return {
-		loading: state.auth.loading
+		loading: state.auth.loading,
+		error: state.auth.error
 	}
 };
 
