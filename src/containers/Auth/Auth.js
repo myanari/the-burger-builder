@@ -4,6 +4,7 @@ import validator from 'validator';
 
 import Input from '../../components/UI/Input/Input';
 import Button from '../../components/UI/Button/Button';
+import Spinner from '../../components/UI/Spinner/Spinner';
 import styles from './Auth.css';
 import * as actions from '../../store/actions';
 
@@ -92,7 +93,7 @@ class Auth extends Component {
 			});
 		}
 
-		const form = formElements.map(el => (
+		let form = formElements.map(el => (
 			<Input
 				key={el.id}
 				elementType={el.config.elementType}
@@ -102,8 +103,9 @@ class Auth extends Component {
 				shouldValidate={el.config.validation}
 				changed={(event) => this.inputChangedHandler(event, el.id)} />
 		));
-		return (
-			<div className={styles.Auth}>
+
+		let showing = (
+			<div>
 				<form onSubmit={this.onSubmitHandler}>
 					{ form }
 					<Button btnType="buttonAction">Submit</Button>
@@ -113,8 +115,24 @@ class Auth extends Component {
 					btnType="buttonCaution">SWITCH TO { this.state.isSignup ? 'SIGNIN' : 'SIGNUP' }</Button>
 			</div>
 		);
+
+		if (this.props.loading) {
+			showing = <Spinner dark />
+		}
+
+		return (
+			<div className={styles.Auth}>
+				{showing}
+			</div>
+		);
 	}
 }
+
+const mapStateToProps = state => {
+	return {
+		loading: state.auth.loading
+	}
+};
 
 const mapDispatchToProps = dispatch => {
 	return {
@@ -122,4 +140,4 @@ const mapDispatchToProps = dispatch => {
 	};
 };
 
-export default connect(null, mapDispatchToProps)(Auth);
+export default connect(mapStateToProps, mapDispatchToProps)(Auth);
