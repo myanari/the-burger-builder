@@ -92,8 +92,9 @@ class CustomerData extends Component {
         valid: true
       },
     },
+    loading: false,
     formIsValid: false
-  };
+  }
 
   orderHandler = (event) => {
     event.preventDefault();
@@ -107,12 +108,12 @@ class CustomerData extends Component {
       ingredients: this.props.ings,
       price: this.props.price,
       orderData: formData
-    };
+    }
 
     this.props.onOrderBurger(order);
-  };
+  }
 
-  static checkValidity(value, rules) {
+  checkValidity(value, rules) {
     let isValid = true;
     if (rules) {
       if (rules.required) {
@@ -133,7 +134,7 @@ class CustomerData extends Component {
     const updatedFormEl = { ...updatedOrderForm[inputId] };
 
     updatedFormEl.value = event.target.value;
-    updatedFormEl.valid = CustomerData.checkValidity(updatedFormEl.value, updatedFormEl.validation);
+    updatedFormEl.valid = this.checkValidity(updatedFormEl.value, updatedFormEl.validation);
     updatedFormEl.touched = true;
     updatedOrderForm[inputId] = updatedFormEl;
 
@@ -144,7 +145,7 @@ class CustomerData extends Component {
     }
 
     this.setState({orderForm: updatedOrderForm, formIsValid: formIsValid});
-  };
+  }
 
   render() {
     const formElements = [];
@@ -171,7 +172,7 @@ class CustomerData extends Component {
         <Button btnType="buttonAction" disabled={!this.state.formIsValid}>Submit</Button>
       </form>
     );
-    if (this.props.loading) {
+    if (this.state.loading) {
       form = <Spinner dark />;
     }
     return(
@@ -185,16 +186,15 @@ class CustomerData extends Component {
 
 const mapStateToProps = state => {
   return {
-    ings: state.burgerBuilder.ingredients,
-    price: state.burgerBuilder.totalPrice,
-    loading: state.order.loading
+    ings: state.ingredients,
+    price: state.totalPrice
   }
-};
+}
 
 const mapDispatchToProps = dispatch => {
-  return {
-    onOrderBurger: (orderData) => dispatch(actions.purchaseBurger(orderData))
+  return{
+    onOrderBurger: (orderData) => dispatch(actions.purchaseBurgerStart(orderData))
   }
-};
+}
 
 export default connect(mapStateToProps, mapDispatchToProps)(withErrorHandler(CustomerData, axios));
