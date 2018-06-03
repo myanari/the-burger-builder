@@ -94,7 +94,7 @@ class CustomerData extends Component {
     },
     loading: false,
     formIsValid: false
-  }
+  };
 
   orderHandler = (event) => {
     event.preventDefault();
@@ -108,10 +108,10 @@ class CustomerData extends Component {
       ingredients: this.props.ings,
       price: this.props.price,
       orderData: formData
-    }
+    };
 
     this.props.onOrderBurger(order);
-  }
+  };
 
   checkValidity(value, rules) {
     let isValid = true;
@@ -145,7 +145,7 @@ class CustomerData extends Component {
     }
 
     this.setState({orderForm: updatedOrderForm, formIsValid: formIsValid});
-  }
+  };
 
   render() {
     const formElements = [];
@@ -186,15 +186,15 @@ class CustomerData extends Component {
 
 const mapStateToProps = state => {
   return {
-    ings: state.ingredients,
-    price: state.totalPrice
+    ings: state.burgerBuilder.ingredients,
+    price: state.burgerBuilder.totalPrice
   }
-}
+};
 
 const mapDispatchToProps = dispatch => {
   return{
-    onOrderBurger: (orderData) => dispatch(actions.purchaseBurgerStart(orderData))
+    onOrderBurger: (orderData) => dispatch(actions.purchaseBurger(orderData))
   }
-}
+};
 
 export default connect(mapStateToProps, mapDispatchToProps)(withErrorHandler(CustomerData, axios));
