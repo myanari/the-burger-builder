@@ -37,12 +37,10 @@ export const auth = (email, password, isSignup) => {
 		};
 		axios.post(url, authData)
 			.then(res => {
-				console.log(res.data);
 				dispatch(authSuccess(res.data.idToken, res.data.localId));
 				dispatch(checkAuthTimeout(res.data.expiresIn));
 			})
 			.catch(err => {
-				console.log(err);
 				dispatch(authFail(err.response.data.error));
 			});
 	};
@@ -60,4 +58,11 @@ export const checkAuthTimeout = (expirationTime) => {
 			dispatch(logout());
 		}, expirationTime * 1000);
 	};
+};
+
+export const setAuthRedirectPath = path => {
+	return {
+		type: actionTypes.SET_AUTH_REDIRECT_PATH,
+		path
+	}
 };
