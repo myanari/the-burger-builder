@@ -1,5 +1,6 @@
 import React, { Component } from 'react';
 import { connect } from 'react-redux';
+import { Redirect } from 'react-router-dom';
 import validator from 'validator';
 
 import Input from '../../components/UI/Input/Input';
@@ -78,7 +79,6 @@ class Auth extends Component {
 	};
 
 	switchAuthModeHandler = () => {
-		console.log(this.state.isSignup);
 		this.setState(prevState => {
 			return { isSignup: !prevState.isSignup };
 		});
@@ -112,6 +112,11 @@ class Auth extends Component {
 			);
 		}
 
+		let authRedirect = null;
+		if (this.props.isAuthenticated) {
+			authRedirect = <Redirect to="/" />
+		}
+
 		let showing = (
 			<div>
 				<h1>{ !this.state.isSignup ? 'LOGIN' : 'SIGNUP' }</h1>
@@ -132,6 +137,7 @@ class Auth extends Component {
 
 		return (
 			<div className={styles.Auth}>
+				{authRedirect}
 				{showing}
 			</div>
 		);
@@ -141,7 +147,8 @@ class Auth extends Component {
 const mapStateToProps = state => {
 	return {
 		loading: state.auth.loading,
-		error: state.auth.error
+		error: state.auth.error,
+		isAuthenticated: state.auth.token !== null
 	}
 };
 
