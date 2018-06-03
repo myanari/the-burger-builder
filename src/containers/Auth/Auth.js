@@ -114,6 +114,7 @@ class Auth extends Component {
 
 		let showing = (
 			<div>
+				<h1>{ !this.state.isSignup ? 'LOGIN' : 'SIGNUP' }</h1>
 				{ errorMessage }
 				<form onSubmit={this.onSubmitHandler}>
 					{ form }
@@ -121,14 +122,13 @@ class Auth extends Component {
 				</form>
 				<Button
 					clicked={this.switchAuthModeHandler}
-					btnType="buttonCaution">SWITCH TO { this.state.isSignup ? 'SIGNIN' : 'SIGNUP' }</Button>
+					btnType="buttonCaution">SWITCH TO { this.state.isSignup ? 'LOGIN' : 'SIGNUP' }</Button>
 			</div>
 		);
 
 		if (this.props.loading) {
 			showing = <Spinner dark />
 		}
-
 
 		return (
 			<div className={styles.Auth}>

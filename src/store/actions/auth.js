@@ -27,7 +27,7 @@ export const auth = (email, password, isSignup) => {
 		dispatch(authStart());
 		const API_KEY = 'AIzaSyBJ1Q9ItNpSH693NNGDb1VOFmeCLDS0998';
 		let url = `https://www.googleapis.com/identitytoolkit/v3/relyingparty/signupNewUser?key=${API_KEY}`;
-		if (isSignup) {
+		if (!isSignup) {
 			url = `https://www.googleapis.com/identitytoolkit/v3/relyingparty/verifyPassword?key=${API_KEY}`;
 		}
 		const authData = {
