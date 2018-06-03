@@ -25,13 +25,11 @@ export const purchaseBurgerStart = () => {
 };
 
 // ASYNC
-export const purchaseBurger = (orderData) => {
+export const purchaseBurger = (orderData, token) => {
   return dispatch => {
   	dispatch(purchaseBurgerStart());
-    axios.post('/orders.json', orderData)
+    axios.post('/orders.json?auth=' + token, orderData)
       .then(res => {
-        console.log(res.data.name);
-        console.log(orderData);
         dispatch(purchaseBurgerSuccess(res.data.name, orderData));
       })
       .catch(err => {
@@ -77,7 +75,6 @@ export const fetchOrders = token => {
 					id: key
 				})
 			}
-			console.log(fetchedOrders);
 			dispatch(fetchOrdersSuccess(fetchedOrders));
 		}).catch(err => {
 			dispatch(fetchOrdersFail(err));

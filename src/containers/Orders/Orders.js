@@ -15,6 +15,9 @@ class Orders extends Component {
 
   render() {
     let orders = <Modal show><Spinner /></Modal>;
+    if (!this.props.orders) {
+			console.log('this.props.orders');
+		}
     if (!this.props.loading) {
       orders = this.props.orders.map(order => {
 				return <Order data={order} key={order.id} />
