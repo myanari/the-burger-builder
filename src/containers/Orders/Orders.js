@@ -9,15 +9,12 @@ import Spinner from '../../components/UI/Spinner/Spinner';
 import Modal from '../../components/UI/Modal/Modal';
 
 class Orders extends Component {
-  componentDidMount() {
+  componentWillMount() {
     this.props.onFetchOrders(this.props.token);
   }
 
   render() {
     let orders = <Modal show><Spinner /></Modal>;
-    if (!this.props.orders) {
-			console.log('this.props.orders');
-		}
     if (!this.props.loading) {
       orders = this.props.orders.map(order => {
 				return <Order data={order} key={order.id} />

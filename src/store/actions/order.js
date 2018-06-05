@@ -51,10 +51,10 @@ export const fetchOrdersSuccess = (orders) => {
 	}
 };
 
-export const fetchOrdersFail = (orders) => {
+export const fetchOrdersFail = (error) => {
 	return {
 		type: actionTypes.FETCH_ORDERS_FAIL,
-		orders: orders
+		error: error
 	}
 };
 
@@ -65,6 +65,7 @@ export const fetchOrdersStart = () => {
 };
 
 export const fetchOrders = token => {
+	console.log('token', token);
 	return dispatch => {
 		dispatch(fetchOrdersStart());
 		axios.get('orders.json?auth=' + token).then(res => {
