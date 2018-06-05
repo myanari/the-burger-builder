@@ -44,7 +44,7 @@ class Auth extends Component {
 		isSignup: true
 	};
 
-	componentDidMount() {
+	componentWillMount() {
 		if (!this.props.building && this.props.authRedirectPath !== '/') {
 			this.props.onSetAuthRedirectPath();
 		}
