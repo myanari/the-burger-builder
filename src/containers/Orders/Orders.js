@@ -9,7 +9,7 @@ import Spinner from '../../components/UI/Spinner/Spinner';
 import Modal from '../../components/UI/Modal/Modal';
 
 class Orders extends Component {
-  componentWillMount() {
+  componentDidMount() {
     this.props.onFetchOrders(this.props.token);
   }
 
