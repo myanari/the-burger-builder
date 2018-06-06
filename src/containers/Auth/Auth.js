@@ -8,6 +8,7 @@ import Button from '../../components/UI/Button/Button';
 import Spinner from '../../components/UI/Spinner/Spinner';
 import styles from './Auth.css';
 import * as actions from '../../store/actions';
+import { updateObject } from '../../shared/utility';
 
 class Auth extends Component {
 	state = {
@@ -67,16 +68,14 @@ class Auth extends Component {
 	}
 
 	inputChangedHandler = (event, controlName) => {
-		const updatedControls = {
-			...this.state.controls,
-			[controlName]: {
-				...this.state.controls[controlName],
+		const updatedControls = updateObject(this.state.controls, {
+			[controlName]: updateObject(this.state.controls[controlName], {
 				value: event.target.value,
 				valid: Auth.checkValidity(event.target.value, this.state.controls[controlName].validation),
 				touched: true
-			}
-		};
-		this.setState({controls: updatedControls});
+			})
+		});
+		this.setState({ controls: updatedControls });
 	};
 
 	onSubmitHandler = (event) => {

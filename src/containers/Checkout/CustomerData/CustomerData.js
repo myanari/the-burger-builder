@@ -3,6 +3,7 @@ import validator from 'validator';
 import axios from '../../../axios-orders';
 import { connect } from 'react-redux';
 import * as actions from '../../../store/actions'
+import { updateObject } from '../../../shared/utility';
 
 import styles from './CustomerData.css';
 import Input from '../../../components/UI/Input/Input';
@@ -131,13 +132,14 @@ class CustomerData extends Component {
   }
 
   inputChangedHandler = (event, inputId) => {
-    const updatedOrderForm = { ...this.state.orderForm };
-    const updatedFormEl = { ...updatedOrderForm[inputId] };
-
-    updatedFormEl.value = event.target.value;
-    updatedFormEl.valid = this.checkValidity(updatedFormEl.value, updatedFormEl.validation);
-    updatedFormEl.touched = true;
-    updatedOrderForm[inputId] = updatedFormEl;
+    const updatedFormEl = updateObject(this.state.orderForm[inputId], {
+			value: event.target.value,
+      valid: this.checkValidity(event.target.value, this.state.orderForm[inputId].validation),
+      touched: true
+    });
+    const updatedOrderForm = updateObject(this.state.orderForm, {
+			[inputId]: updatedFormEl
+    });
 
     let formIsValid = true;
     
