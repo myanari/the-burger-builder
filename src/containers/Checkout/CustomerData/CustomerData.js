@@ -1,9 +1,8 @@
 import React, { Component } from 'react';
-import validator from 'validator';
 import axios from '../../../axios-orders';
 import { connect } from 'react-redux';
 import * as actions from '../../../store/actions'
-import { updateObject } from '../../../shared/utility';
+import { updateObject, checkValidity } from '../../../shared/utility';
 
 import styles from './CustomerData.css';
 import Input from '../../../components/UI/Input/Input';
@@ -115,26 +114,10 @@ class CustomerData extends Component {
     this.props.onOrderBurger(order, this.props.token);
   };
 
-  checkValidity(value, rules) {
-    let isValid = true;
-    if (rules) {
-      if (rules.required) {
-        isValid = validator.trim(value) !== '' && isValid;
-      }
-      if (rules.postal) {
-        isValid = validator.isPostalCode(validator.trim(value + ''), 'any') && isValid;
-      }
-      if (rules.email) {
-        isValid = validator.isEmail(validator.trim(value)) && isValid;
-      }
-    }
-    return isValid;
-  }
-
   inputChangedHandler = (event, inputId) => {
     const updatedFormEl = updateObject(this.state.orderForm[inputId], {
 			value: event.target.value,
-      valid: this.checkValidity(event.target.value, this.state.orderForm[inputId].validation),
+      valid: checkValidity(event.target.value, this.state.orderForm[inputId].validation),
       touched: true
     });
     const updatedOrderForm = updateObject(this.state.orderForm, {
