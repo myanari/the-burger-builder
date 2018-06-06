@@ -4,7 +4,6 @@ import { connect } from 'react-redux';
 
 import CustomerData from './CustomerData/CustomerData';
 import CheckoutSummary from '../../components/Order/CheckoutSummary/CheckoutSummary';
-import styles from './Checkout.css';
 
 class Checkout extends Component {
   checkoutContinuedHandler = () => {
@@ -21,7 +20,7 @@ class Checkout extends Component {
     if (this.props.ings) {
     	const purchasedRedirect = this.props.purchased ? <Redirect to="/" /> : null;
     	summary = (
-    		<div className={styles.CheckoutSummary}>
+    		<div style={{marginTop: '4rem'}}>
 					{purchasedRedirect}
 					<CheckoutSummary
 						ingredients={this.props.ings}

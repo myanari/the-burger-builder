@@ -3,9 +3,6 @@ import Button from '../../UI/Button/Button';
 import styles from './OrderSummary.css';
 
 class OrderSummary extends Component {
-	componentWillUpdate() {
-		console.log('[OrderSummary] will update');
-	}
   render() {
 		const ingredientSummary = Object.keys(this.props.ingredients)
 			.map(ingKey => {
