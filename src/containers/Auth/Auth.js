@@ -1,4 +1,4 @@
-import React, { Component } from 'react';
+import React, {Component, Fragment} from 'react';
 import { connect } from 'react-redux';
 import { Redirect } from 'react-router-dom';
 
@@ -106,17 +106,20 @@ class Auth extends Component {
 		}
 
 		let showing = (
-			<div>
-				<h1>{ !this.state.isSignup ? 'LOGIN' : 'SIGNUP' }</h1>
+			<Fragment>
+				<h2 className={styles.AuthMode}>{ !this.state.isSignup ? 'LOGIN' : 'SIGNUP' }</h2>
 				{ errorMessage }
-				<form onSubmit={this.onSubmitHandler}>
+				<form onSubmit={this.onSubmitHandler} className={styles.Form}>
 					{ form }
 					<Button btnType="buttonAction">Submit</Button>
 				</form>
-				<Button
-					clicked={this.switchAuthModeHandler}
-					btnType="buttonCaution">SWITCH TO { this.state.isSignup ? 'LOGIN' : 'SIGNUP' }</Button>
-			</div>
+				<div className={styles.SwitchButton}>
+					<Button
+						isSmall
+						clicked={this.switchAuthModeHandler}
+						btnType="buttonPrimary">SWITCH TO { this.state.isSignup ? 'LOGIN' : 'SIGNUP' }</Button>
+				</div>
+			</Fragment>
 		);
 
 		if (this.props.loading) {
@@ -124,10 +127,12 @@ class Auth extends Component {
 		}
 
 		return (
+			<Fragment>
 			<div className={styles.Auth}>
 				{authRedirect}
 				{showing}
 			</div>
+			</Fragment>
 		);
 	}
 }

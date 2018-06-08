@@ -9,17 +9,30 @@ import classnames from 'classnames'
 // My project's: buttonCaution = Max's project: Caution
 class button extends React.Component {
     state = {
-        stdStyles: [
-            btnClasses.button,
-            btnClasses.buttonLongShadow,
-            btnClasses.button3d,
-            btnClasses.buttonBox
-        ]
-    }
+        stdStyles: [btnClasses.button]
+    };
     componentDidMount() {
-        if (this.props.children) {
-            let styles = [btnClasses.button, btnClasses.buttonRounded, btnClasses.buttonGlow];
+        if (this.props.children && typeof this.props.children === 'string') {
+            let styles = this.state.stdStyles.concat(
+              btnClasses.buttonRounded,
+              btnClasses.buttonGlow
+            );
             this.setState({stdStyles: styles});
+        } else {
+            let boxStyle = this.state.stdStyles.concat(
+              btnClasses.buttonLongShadow,
+              btnClasses.buttonBox,
+              btnClasses.button3d
+            );
+            this.setState({stdStyles: boxStyle})
+        }
+
+        if (this.props.isSmall) {
+            let smallStyle = this.state.stdStyles.concat(
+              btnClasses.buttonSmall,
+              btnClasses.buttonRounded
+            );
+            this.setState({stdStyles: smallStyle});
         }
     }
     
@@ -39,6 +52,6 @@ class button extends React.Component {
         return(btn);
     }
     
-};
+}
 
 export default button;
