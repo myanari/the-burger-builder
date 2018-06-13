@@ -1,5 +1,4 @@
 import * as actionTypes from './actionTypes';
-import axios from 'axios';
 
 export const authStart = () => {
 	return {
@@ -23,37 +22,16 @@ export const authFail = (error) => {
 };
 
 export const auth = (email, password, isSignup) => {
-	return dispatch => {
-		dispatch(authStart());
-		const API_KEY = 'AIzaSyBJ1Q9ItNpSH693NNGDb1VOFmeCLDS0998';
-		let url = `https://www.googleapis.com/identitytoolkit/v3/relyingparty/signupNewUser?key=${API_KEY}`;
-		if (!isSignup) {
-			url = `https://www.googleapis.com/identitytoolkit/v3/relyingparty/verifyPassword?key=${API_KEY}`;
-		}
-		const authData = {
-			email,
-			password,
-			returnSecureToken: true
-		};
-		axios.post(url, authData)
-			.then(res => {
-				const expirationTime = new Date(new Date().getTime() + res.data.expiresIn * 1000);
-				localStorage.setItem('token', res.data.idToken);
-				localStorage.setItem('expirationTime', expirationTime);
-				localStorage.setItem('userId', res.data.localId);
-				dispatch(authSuccess(res.data.idToken, res.data.localId));
-				dispatch(checkAuthTimeout(res.data.expiresIn));
-			})
-			.catch(err => {
-				dispatch(authFail(err.response.data.error));
-			});
+	return {
+		type: actionTypes.AUTH_USER,
+		email,
+		password,
+		isSignup
 	};
 };
 
 export const logout = () => {
-	return {
-		type: actionTypes.AUTH_INITIATE_LOGOUT
-	}
+	return { type: actionTypes.AUTH_INITIATE_LOGOUT };
 };
 
 export const logoutSucceed = () => {
@@ -61,7 +39,7 @@ export const logoutSucceed = () => {
 };
 
 export const checkAuthTimeout = (expirationTime) => {
-	return { type: actionTypes.AUTH_CHECK_TIMEOUT, expirationTime: 10 };
+	return { type: actionTypes.AUTH_CHECK_TIMEOUT, expirationTime };
 };
 
 export const setAuthRedirectPath = path => {
